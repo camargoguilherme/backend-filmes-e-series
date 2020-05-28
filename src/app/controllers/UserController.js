@@ -4,7 +4,6 @@ import User from '../models/User';
 class UserController {
   async store(req, res) {
     const schema = Yup.object().shape({
-      username: Yup.string().required(),
       fullname: Yup.string().required(),
       isAdmin: Yup.bool(),
       email: Yup.string().email().required(),
@@ -25,10 +24,9 @@ class UserController {
       req.body.isAdmin = userLoged.isAdmin && req.body.isAdmin;
     }
 
-    const {id, username, fullname, email} = await User.create(req.body);
+    const {id, fullname, email} = await User.create(req.body);
     return res.json({
       id,
-      username,
       fullname,
       email,
     });
