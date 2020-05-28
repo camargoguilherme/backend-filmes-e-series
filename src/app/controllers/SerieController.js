@@ -20,7 +20,8 @@ class SerieController {
     };
     const series = await Serie.find(filter, props)
       .skip((page - 1) * limit)
-      .limit(limit);
+      .limit(limit)
+      .sort({title: 1});
     return res.json({series, page, count: limit});
   }
 

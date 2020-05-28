@@ -27,8 +27,6 @@ const UserSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  token: String,
-  fcm_token: String,
 });
 
 UserSchema.pre('save', function (next) {
